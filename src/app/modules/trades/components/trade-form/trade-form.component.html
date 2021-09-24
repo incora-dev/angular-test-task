@@ -1,1 +1,42 @@
-<p>trade-form works!</p>
+<form nz-form [formGroup]="tradeForm" (ngSubmit)="submitForm()">
+  <nz-form-item>
+    <nz-form-label [nzSm]="8" [nzXs]="24" nzRequired>Trade name</nz-form-label>
+    <nz-form-control [nzSm]="16" [nzXs]="24" nzErrorTip="Please input trade name!">
+      <input type="text" nz-input formControlName="name" placeholder="trade name" />
+    </nz-form-control>
+  </nz-form-item>
+
+  <nz-form-item>
+    <nz-form-label [nzSm]="8" [nzXs]="24" nzRequired nzErrorTip="Please input entry date!">Entry date</nz-form-label>
+    <nz-form-control [nzSm]="16" [nzXs]="24">
+      <nz-date-picker formControlName="entryDate" [nzDisabledDate]="isDayAllowed"	></nz-date-picker>
+    </nz-form-control>
+  </nz-form-item>
+
+  <nz-form-item>
+    <nz-form-label [nzSm]="8" [nzXs]="24" nzRequired nzErrorTip="Please input trade price!">Entry price</nz-form-label>
+    <nz-form-control [nzSm]="16" [nzXs]="24">
+      <nz-input-number [nzMin]="1" [nzStep]="1"  formControlName="entryPrice"></nz-input-number>
+    </nz-form-control>
+  </nz-form-item>
+
+  <nz-form-item>
+    <nz-form-label [nzSm]="8" [nzXs]="24" nzRequired nzErrorTip="Please input exit date!">Exit date</nz-form-label>
+    <nz-form-control [nzSm]="16" [nzXs]="24">
+      <nz-date-picker formControlName="exitDate"></nz-date-picker>
+    </nz-form-control>
+  </nz-form-item>
+
+  <nz-form-item>
+    <nz-form-label [nzSm]="8" [nzXs]="24" nzRequired>Exit price</nz-form-label>
+    <nz-form-control [nzSm]="16" [nzXs]="24" nzErrorTip="Please input exit price!">
+      <nz-input-number [nzMin]="1" [nzStep]="1" formControlName="exitPrice"></nz-input-number>
+    </nz-form-control>
+  </nz-form-item>
+
+  <nz-form-item>
+    <nz-form-control [nzXs]="{ span: 24, offset: 0 }" [nzSm]="{ span: 16, offset: 8 }">
+      <button nz-button nzType="primary" [disabled]="!tradeForm.valid">Submit</button>
+    </nz-form-control>
+  </nz-form-item>
+</form>

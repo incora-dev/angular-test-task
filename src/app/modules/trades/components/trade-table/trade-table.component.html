@@ -1,0 +1,34 @@
+<nz-table
+  #dynamicTable
+  [nzData]="data"
+>
+  <thead>
+    <tr>
+      <th [nzLeft]="true">№</th>
+      <th>Name</th>
+      <th>Entry date</th>
+      <th>Entry price</th>
+      <th>Exit date</th>
+      <th>Exit price</th>
+      <th>Profit</th>
+      <th [nzRight]="true">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <ng-container *ngFor="let data of dynamicTable.data; let i = index">
+      <tr>
+        <td [nzLeft]="true">{{ i + 1 }}</td>
+        <td [nzEllipsis]="true">{{ data.name }}</td>
+        <td>{{ data.entryDate | date:'mediumDate' }}</td>
+        <td>{{ data.entryPrice }}</td>
+        <td>{{ data.exitDate | date:'mediumDate'}}</td>
+        <td>{{ data.exitPrice }}</td>
+        <td>{{ data.profit }}</td>
+        <td [nzRight]="true" [nzEllipsis]="true">
+          <button (click)="editTrade.emit(data.id)">Edit</button>
+          <button (click)="removeTrade.emit(data.id)">Delete</button>
+        </td>
+      </tr>
+    </ng-container>
+  </tbody>
+</nz-table>
