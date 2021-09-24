@@ -1,20 +1,26 @@
-<button (click)="openNewTradeModal()">Add Trade</button>
-<app-trade-table
-  [data]="data"
-  (removeTrade)="showConfirm($event)"
-  (editTrade)="onEditTrade($event)"
-></app-trade-table>
+<section>
+  <app-balance-chart [lineChartData]="balanceChartData"></app-balance-chart>
+</section>
 
-<nz-modal
-  [(nzVisible)]="isEditModalVisible"
-  [nzFooter]="null"
-  (nzOnCancel)="closeModal()"
-  nzTitle="Update trade info"
->
-  <ng-container *nzModalContent>
-    <app-trade-form
-      (submitTrade)="updateTrade($event)"
-      [value]="tradeToEdit"
-    ></app-trade-form>
-  </ng-container>
-</nz-modal>
+<section>
+  <button (click)="openNewTradeModal()">Add Trade</button>
+  <app-trade-table
+    [data]="data"
+    (removeTrade)="showConfirm($event)"
+    (editTrade)="onEditTrade($event)"
+  ></app-trade-table>
+
+  <nz-modal
+    [(nzVisible)]="isEditModalVisible"
+    [nzFooter]="null"
+    (nzOnCancel)="closeModal()"
+    nzTitle="Update trade info"
+  >
+    <ng-container *nzModalContent>
+      <app-trade-form
+        (submitTrade)="updateTrade($event)"
+        [value]="tradeToEdit"
+      ></app-trade-form>
+    </ng-container>
+  </nz-modal>
+</section>

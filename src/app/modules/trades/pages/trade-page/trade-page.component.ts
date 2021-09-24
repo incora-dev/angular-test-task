@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ChartDataSets } from 'chart.js';
 import { NzModalService } from 'ng-zorro-antd/modal';
 import { TradeModel } from '../../models/trade.model';
 
@@ -12,6 +13,10 @@ export class TradePageComponent implements OnInit {
   index: number = 0;
   isEditModalVisible = false;
   tradeToEdit: TradeModel | null = null;
+
+  balanceChartData: ChartDataSets[] = [
+    { data: [65, 59, 80, 81, 56, 55, 40], label: 'Balance' },
+  ];
 
   constructor(private modal: NzModalService) { }
 
